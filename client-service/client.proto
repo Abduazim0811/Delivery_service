@@ -1,0 +1,38 @@
+syntax="proto3";
+
+option go_package="./pb";
+
+service ClientService{
+    rpc CreateClient(ClRequest) returns(ClResponse){}
+    rpc UpdateClient(ClRequest) returns(Response){}
+    rpc DeleteClient(ClResponse) returns(Response){}
+    rpc GetClientById(ClResponse) returns(ClRequest){}
+    rpc GetClientLocation(ClResponse) returns(ClAddress){}
+}
+
+message Response{
+    string message =1;
+}
+
+message ClRequest{
+    string  id = 1;
+    string  name = 2;
+    string  email = 3;
+    string  phone = 4;
+    string  time = 5;
+    string  city = 6;
+    string  street = 7;
+    string home_number =8;
+}
+
+message ClResponse{
+    string id = 1;
+}
+
+message ClAddress{
+    string id = 1;
+    string city = 2;
+    string street = 3;
+    string home_number = 4; 
+}
+

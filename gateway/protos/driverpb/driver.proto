@@ -1,0 +1,55 @@
+syntax="proto3";
+
+option go_package="./genpb/pbdriver";
+
+service DriverService{
+    rpc CreateDriver(DRequest) returns (DResponse){}
+    rpc UpdateDriver(DRequest) returns (ResponseM){}
+    rpc DeleteDriver(DResponse) returns (ResponseM){}
+    rpc GetDriverById(DResponse) returns (DRequest){}
+    rpc GetActiveDriverByLocation(LocationRequest) returns (LocationResponse){}
+}
+
+
+message DRequest{
+    string id = 1 ;
+    string name = 2 ;
+    string email = 3 ;
+    string phone = 4 ;
+    Address address = 5;
+    string working_place = 6;
+    string active = 7 ;
+    Status status = 8 ;
+    string join_date = 9;
+}
+
+message Status{
+    string vehicle = 1 ;
+    float rating = 2 ;
+}
+
+message Address{
+    string city = 1;
+    string street = 2;
+    string home_number =3;
+}
+
+message DResponse{
+    string id = 1;
+}
+
+message LocationRequest{
+    string region = 1 ;
+}
+
+message LocationResponse{
+    string id = 1;
+    string name = 2 ;
+    string phone = 3 ;
+    string vehicle = 4 ; 
+}
+
+message ResponseM{
+    string message = 1;
+}
+
